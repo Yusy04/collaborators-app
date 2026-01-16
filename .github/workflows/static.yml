@@ -47,6 +47,16 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
       
+      - name: Verify build output
+        run: |
+          echo "Checking if index.html contains base path..."
+          if grep -q "/collaborators-app/assets" dist/index.html; then
+            echo "✅ Base path found in build output"
+          else
+            echo "⚠️ Warning: Base path not found in build output"
+            cat dist/index.html | head -15
+          fi
+      
       - name: Setup Pages
         uses: actions/configure-pages@v5
       
