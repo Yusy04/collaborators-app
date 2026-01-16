@@ -172,7 +172,7 @@ export const fetchMerchantLeaderboard = async (): Promise<MerchantLeaderboardEnt
       .schema('Snoonu Collaborators')
       .from('merchant_leaderboard')
       .select('*')
-      .order('commissions_given', { ascending: false })
+      .order('total_xp_awarded', { ascending: false })
       .limit(10);
 
     if (error) throw error;
@@ -197,7 +197,7 @@ export const fetchDailyWinners = async (): Promise<DailyWinner[]> => {
       .from('daily_winners')
       .select('*')
       .eq('date', today)
-      .order('earnings', { ascending: false })
+      .order('xp_earned', { ascending: false })
       .limit(3);
 
     if (error) throw error;

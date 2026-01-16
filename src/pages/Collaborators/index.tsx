@@ -23,8 +23,6 @@ export const Collaborators = () => {
     collaborators,
     merchantLeaderboard,
     dailyWinners,
-    followedCollaborators,
-    toggleFollow,
     isDemoExpanded,
     setDemoExpanded,
     enrollSampleCampaign,
@@ -76,8 +74,6 @@ export const Collaborators = () => {
             collaborators={collaborators}
             merchantLeaderboard={merchantLeaderboard}
             dailyWinners={dailyWinners}
-            followedCollaborators={followedCollaborators}
-            onFollowToggle={toggleFollow}
           />
         )}
       </div>

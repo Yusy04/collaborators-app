@@ -6,16 +6,12 @@ import { TierBadge } from './TierBadge';
 
 interface CollaboratorProfileModalProps {
   collaborator: CollaboratorProfile;
-  isFollowing: boolean;
   onClose: () => void;
-  onFollowToggle: () => void;
 }
 
 export const CollaboratorProfileModal = ({
   collaborator,
-  isFollowing,
   onClose,
-  onFollowToggle,
 }: CollaboratorProfileModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<Element | null>(null);
@@ -75,26 +71,13 @@ export const CollaboratorProfileModal = ({
 
         <div className="pt-14 p-6">
           {/* Info */}
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 id="collaborator-name" className="text-xl font-bold text-gray-900">
-                {collaborator.handle}
-              </h3>
-              <div className="flex items-center gap-2 mt-1">
-                <TierBadge tier={collaborator.tier} />
-                {collaborator.followers && <span className="text-sm text-gray-500">{collaborator.followers} followers</span>}
-              </div>
+          <div className="mb-4">
+            <h3 id="collaborator-name" className="text-xl font-bold text-gray-900">
+              {collaborator.handle}
+            </h3>
+            <div className="flex items-center gap-2 mt-1">
+              <TierBadge tier={collaborator.tier} />
             </div>
-            <button
-              onClick={onFollowToggle}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                isFollowing
-                  ? 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  : 'bg-snoonu-red text-white hover:bg-red-600'
-              }`}
-            >
-              {isFollowing ? 'Following' : 'Follow'}
-            </button>
           </div>
 
           {/* Stats */}
@@ -103,9 +86,9 @@ export const CollaboratorProfileModal = ({
               <div className="text-xl font-bold text-gray-900">{collaborator.approvedCount}</div>
               <div className="text-xs text-gray-500">Approvals</div>
             </div>
-            <div className="bg-gray-50 rounded-lg p-3 text-center">
-              <div className="text-xl font-bold text-gray-900">{collaborator.totalEarnings}</div>
-              <div className="text-xs text-gray-500">QAR Earned</div>
+            <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-lg p-3 text-center">
+              <div className="text-xl font-bold text-emerald-500">{collaborator.totalXP.toLocaleString()}</div>
+              <div className="text-xs text-gray-500">Total XP</div>
             </div>
             {collaborator.conversionRate && (
               <div className="bg-gray-50 rounded-lg p-3 text-center">
@@ -138,7 +121,7 @@ export const CollaboratorProfileModal = ({
                     </div>
                     <span className="text-sm font-medium text-gray-700">{campaign.merchant}</span>
                   </div>
-                  <span className="text-sm font-semibold text-green-600">+{campaign.earnings} QAR</span>
+                  <span className="text-sm font-semibold text-emerald-500">+{campaign.xp.toLocaleString()} XP</span>
                 </div>
               ))}
             </div>

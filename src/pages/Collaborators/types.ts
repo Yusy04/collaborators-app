@@ -70,10 +70,9 @@ export interface CollaboratorProfile {
   avatar: string;
   tier: Tier;
   approvedCount: number;
-  totalEarnings: number;
-  followers?: number;
+  totalXP: number;
   conversionRate?: number;
-  topCampaigns: { merchant: string; logo: string; earnings: number }[];
+  topCampaigns: { merchant: string; logo: string; xp: number }[];
   joinedDate: string;
 }
 
@@ -83,7 +82,7 @@ export interface MerchantLeaderboardEntry {
   merchant: string;
   name: string;
   logo: string;
-  commissionsGiven: number;
+  totalXPAwarded: number;
   collabsEnrolled: number;
   tags: string[];
 }
@@ -94,7 +93,7 @@ export interface DailyWinner {
   collaborator: CollaboratorProfile;
   campaign: string;
   merchant: string;
-  earnings: number;
+  xpEarned: number;
 }
 
 export interface TierConfig {

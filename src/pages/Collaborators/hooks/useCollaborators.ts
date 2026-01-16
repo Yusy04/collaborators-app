@@ -30,10 +30,6 @@ interface UseCollaboratorsReturn {
   merchantLeaderboard: MerchantLeaderboardEntry[];
   dailyWinners: DailyWinner[];
   
-  // Follow system
-  followedCollaborators: Set<string>;
-  toggleFollow: (collaboratorId: string) => void;
-  
   // Seed data
   seedData: (data: {
     collaborators: CollaboratorProfile[];
@@ -58,7 +54,6 @@ export const useCollaborators = (): UseCollaboratorsReturn => {
   const [collaborators, setCollaborators] = useState<CollaboratorProfile[]>(mockCollaborators);
   const [merchantLeaderboard, setMerchantLeaderboard] = useState<MerchantLeaderboardEntry[]>(mockMerchantLeaderboard);
   const [dailyWinners, setDailyWinners] = useState<DailyWinner[]>(mockDailyWinners);
-  const [followedCollaborators, setFollowedCollaborators] = useState<Set<string>>(new Set());
   const [isDemoExpanded, setDemoExpanded] = useState(true);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
 
@@ -180,18 +175,6 @@ export const useCollaborators = (): UseCollaboratorsReturn => {
     showToast('Enrollment rejected', 'error');
   }, [showToast]);
 
-  const toggleFollow = useCallback((collaboratorId: string) => {
-    setFollowedCollaborators(prev => {
-      const next = new Set(prev);
-      if (next.has(collaboratorId)) {
-        next.delete(collaboratorId);
-      } else {
-        next.add(collaboratorId);
-      }
-      return next;
-    });
-  }, []);
-
   const seedData = useCallback((data: {
     collaborators: CollaboratorProfile[];
     merchantLeaderboard: MerchantLeaderboardEntry[];
@@ -227,8 +210,6 @@ export const useCollaborators = (): UseCollaboratorsReturn => {
     collaborators,
     merchantLeaderboard,
     dailyWinners,
-    followedCollaborators,
-    toggleFollow,
     seedData,
     isDemoExpanded,
     setDemoExpanded,

@@ -302,8 +302,6 @@ interface LeaderboardTabProps {
   collaborators: CollaboratorProfile[];
   merchantLeaderboard: MerchantLeaderboardEntry[];
   dailyWinners: DailyWinner[];
-  followedCollaborators: Set<string>;
-  onFollowToggle: (collaboratorId: string) => void;
 }
 
 type LeaderboardTimeFilter = 'monthly' | 'allTime';
@@ -313,8 +311,6 @@ export const LeaderboardTab = ({
   collaborators,
   merchantLeaderboard,
   // dailyWinners - removed, no longer used
-  followedCollaborators,
-  onFollowToggle,
 }: LeaderboardTabProps) => {
   const [selectedCollaborator, setSelectedCollaborator] = useState<CollaboratorProfile | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<typeof FEATURED_VIDEOS[0] | null>(null);
@@ -332,11 +328,11 @@ export const LeaderboardTab = ({
         const aRecent = a.joinedDate?.includes('Jan') || a.joinedDate?.includes('Dec') ? 1 : 0;
         const bRecent = b.joinedDate?.includes('Jan') || b.joinedDate?.includes('Dec') ? 1 : 0;
         if (bRecent !== aRecent) return bRecent - aRecent;
-        return b.totalEarnings - a.totalEarnings;
+        return b.totalXP - a.totalXP;
       });
     } else {
-      // All time: sort by total earnings
-      return [...collaborators].sort((a, b) => b.totalEarnings - a.totalEarnings);
+      // All time: sort by total XP
+      return [...collaborators].sort((a, b) => b.totalXP - a.totalXP);
     }
   }, [collaborators, timeFilter]);
   const currentTier = computeTier(approvedCount);
@@ -401,7 +397,7 @@ export const LeaderboardTab = ({
                 </span>
                 Top Collaborators
               </h4>
-              <p className="text-xs text-gray-500 mt-1">Content creators with highest earnings</p>
+              <p className="text-xs text-gray-500 mt-1">Content creators with highest XP</p>
             </div>
             <div className="flex items-center bg-gray-100/80 rounded-xl p-1 shadow-inner">
               <button 
@@ -436,9 +432,10 @@ export const LeaderboardTab = ({
                   onClick={() => setSelectedCollaborator(filteredCollaborators[1])}
                   className="relative flex flex-col items-center group cursor-pointer transition-transform hover:scale-105"
                 >
-                  {/* Prize Badge */}
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
-                    500 QAR
+                  {/* XP Badge */}
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-orange-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
+                    {filteredCollaborators[1].totalXP.toLocaleString()}
+                    <span className="ml-1 opacity-90">XP</span>
                   </div>
                   
                   {/* Avatar Ring */}
@@ -457,7 +454,6 @@ export const LeaderboardTab = ({
                   <div className="text-center mt-2">
                     <div className="text-gray-900 font-semibold text-sm truncate max-w-[100px]">{filteredCollaborators[1].handle}</div>
                     <div className="text-gray-500 text-xs mt-0.5">{filteredCollaborators[1].approvedCount} approvals</div>
-                    <div className="text-green-600 text-xs font-semibold">{filteredCollaborators[1].totalEarnings} QAR</div>
                   </div>
 
                   {/* Podium Stand */}
@@ -478,9 +474,10 @@ export const LeaderboardTab = ({
                     👑
                   </div>
                   
-                  {/* Prize Badge */}
-                  <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
-                    1000 QAR
+                  {/* XP Badge */}
+                  <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-orange-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
+                    {filteredCollaborators[0].totalXP.toLocaleString()}
+                    <span className="ml-1 opacity-90">XP</span>
                   </div>
                   
                   {/* Avatar Ring - Larger for 1st */}
@@ -499,7 +496,6 @@ export const LeaderboardTab = ({
                   <div className="text-center mt-2">
                     <div className="text-gray-900 font-bold text-base truncate max-w-[120px]">{filteredCollaborators[0].handle}</div>
                     <div className="text-gray-500 text-xs mt-0.5">{filteredCollaborators[0].approvedCount} approvals</div>
-                    <div className="text-green-600 text-sm font-bold">{filteredCollaborators[0].totalEarnings} QAR</div>
                   </div>
 
                   {/* Podium Stand - Tallest */}
@@ -517,9 +513,10 @@ export const LeaderboardTab = ({
                   onClick={() => setSelectedCollaborator(filteredCollaborators[2])}
                   className="relative flex flex-col items-center group cursor-pointer transition-transform hover:scale-105"
                 >
-                  {/* Prize Badge */}
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
-                    250 QAR
+                  {/* XP Badge */}
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-orange-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
+                    {filteredCollaborators[2].totalXP.toLocaleString()}
+                    <span className="ml-1 opacity-90">XP</span>
                   </div>
                   
                   {/* Avatar Ring */}
@@ -538,7 +535,6 @@ export const LeaderboardTab = ({
                   <div className="text-center mt-2">
                     <div className="text-gray-900 font-semibold text-sm truncate max-w-[100px]">{filteredCollaborators[2].handle}</div>
                     <div className="text-gray-500 text-xs mt-0.5">{filteredCollaborators[2].approvedCount} approvals</div>
-                    <div className="text-green-600 text-xs font-semibold">{filteredCollaborators[2].totalEarnings} QAR</div>
                   </div>
 
                   {/* Podium Stand */}
@@ -574,7 +570,7 @@ export const LeaderboardTab = ({
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-sm font-bold text-green-600">{collab.totalEarnings.toLocaleString()} QAR</div>
+                    <div className="text-sm font-bold text-emerald-500">{collab.totalXP.toLocaleString()} XP</div>
                   </div>
                 </button>
               ))}
@@ -595,7 +591,7 @@ export const LeaderboardTab = ({
               </span>
               Top Merchants
             </h4>
-            <p className="text-xs text-gray-500 mt-1">Brands with highest collaborator payouts</p>
+            <p className="text-xs text-gray-500 mt-1">Brands with highest collaborator engagement</p>
           </div>
           <div className="divide-y divide-gray-50">
             {merchantLeaderboard.map((merchant, i) => (
@@ -632,7 +628,7 @@ export const LeaderboardTab = ({
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-sm font-bold text-green-600">{merchant.commissionsGiven.toLocaleString()} QAR</div>
+                  <div className="text-sm font-bold text-emerald-500">{merchant.totalXPAwarded.toLocaleString()} XP</div>
                   {merchant.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1 justify-end mt-1">
                       {merchant.tags.slice(0, 2).map((tag, idx) => (
@@ -734,9 +730,7 @@ export const LeaderboardTab = ({
       {selectedCollaborator && (
         <CollaboratorProfileModal
           collaborator={selectedCollaborator}
-          isFollowing={followedCollaborators.has(selectedCollaborator.id)}
           onClose={() => setSelectedCollaborator(null)}
-          onFollowToggle={() => onFollowToggle(selectedCollaborator.id)}
         />
       )}
       

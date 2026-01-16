@@ -59,7 +59,7 @@ export const campaigns: Campaign[] = [
   {
     id: "camp-2",
     merchant: "Korean Beauty",
-    logo: "https://images.snoonu.com/brand/header_image/2024-02/00af4a7a-9386-4860-bb04-809cf7a6fb96_JumboLogo.png?format=webp",
+    logo: "https://images.snoonu.com/brand/2024-02/00af4a7a-9386-4860-bb04-809cf7a6fb96_JumboLogo.png?format=webp",
     vertical: "Market",
     category: "Beauty & Skincare",
     discount: "15% off up to 60 QAR",
@@ -298,6 +298,26 @@ export const campaigns: Campaign[] = [
   }
 ];
 
+// ==================== XP SYSTEM ====================
+// XP is earned through activity and engagement, not tied to monetary values
+// Base XP per approval: 100 XP
+// Quality bonus: up to 50 XP
+// Engagement bonus: up to 100 XP (based on clicks/conversions)
+// Tier bonus multiplier: Rookie 1x, Bronze 1.1x, Silver 1.25x, Gold 1.5x, Platinum 2x
+
+export const XP_CONFIG = {
+  baseApprovalXP: 100,
+  qualityBonus: 50,
+  maxEngagementBonus: 100,
+  tierMultipliers: {
+    rookie: 1,
+    bronze: 1.1,
+    silver: 1.25,
+    gold: 1.5,
+    platinum: 2,
+  },
+};
+
 // ==================== MOCK LEADERBOARD DATA ====================
 export const mockCollaborators: CollaboratorProfile[] = [
   {
@@ -306,11 +326,11 @@ export const mockCollaborators: CollaboratorProfile[] = [
     avatar: '👨‍🍳',
     tier: 'platinum',
     approvedCount: 67,
-    totalEarnings: 2450.50,
+    totalXP: 15850,
     topCampaigns: [
-      { merchant: 'McDonalds', logo: 'https://www.mcdonalds.com/content/dam/sites/ArabiaGWS/arabic/nfl/logo/McDonalds_Logo.png', earnings: 890 },
-      { merchant: 'Tea Time', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpqawVmP77HQWimN-bUvxVpOlpLE8gYHAXCw&s', earnings: 650 },
-      { merchant: 'Karak Mqanes', logo: 'https://images.deliveryhero.io/image/talabat/restaurants/logo_94637864896607282057.jpg?width=180', earnings: 420 },
+      { merchant: 'McDonalds', logo: 'https://www.mcdonalds.com/content/dam/sites/ArabiaGWS/arabic/nfl/logo/McDonalds_Logo.png', xp: 4200 },
+      { merchant: 'Tea Time', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpqawVmP77HQWimN-bUvxVpOlpLE8gYHAXCw&s', xp: 3150 },
+      { merchant: 'Karak Mqanes', logo: 'https://images.deliveryhero.io/image/talabat/restaurants/logo_94637864896607282057.jpg?width=180', xp: 2800 },
     ],
     joinedDate: 'Oct 2025',
   },
@@ -320,10 +340,10 @@ export const mockCollaborators: CollaboratorProfile[] = [
     avatar: '🍽️',
     tier: 'gold',
     approvedCount: 34,
-    totalEarnings: 1280.00,
+    totalXP: 8520,
     topCampaigns: [
-      { merchant: 'Korean Beauty', logo: 'https://images.snoonu.com/brand/header_image/2024-02/00af4a7a-9386-4860-bb04-809cf7a6fb96_JumboLogo.png?format=webp', earnings: 520 },
-      { merchant: 'McDonalds', logo: 'https://www.mcdonalds.com/content/dam/sites/ArabiaGWS/arabic/nfl/logo/McDonalds_Logo.png', earnings: 380 },
+      { merchant: 'Korean Beauty', logo: 'https://images.snoonu.com/brand/2024-02/00af4a7a-9386-4860-bb04-809cf7a6fb96_JumboLogo.png?format=webp', xp: 2450 },
+      { merchant: 'McDonalds', logo: 'https://www.mcdonalds.com/content/dam/sites/ArabiaGWS/arabic/nfl/logo/McDonalds_Logo.png', xp: 1980 },
     ],
     joinedDate: 'Nov 2025',
   },
@@ -333,9 +353,9 @@ export const mockCollaborators: CollaboratorProfile[] = [
     avatar: '📱',
     tier: 'silver',
     approvedCount: 18,
-    totalEarnings: 890.00,
+    totalXP: 4280,
     topCampaigns: [
-      { merchant: 'Toysimo', logo: 'https://images.snoonu.com/brand/header_image/2024-03/010ca983-af9b-4449-9ef0-d35c66da220b_FavoritebrandToysimo.png?format=webp', earnings: 650 },
+      { merchant: 'Toysimo', logo: 'https://images.snoonu.com/brand/header_image/2024-03/010ca983-af9b-4449-9ef0-d35c66da220b_FavoritebrandToysimo.png?format=webp', xp: 2150 },
     ],
     joinedDate: 'Dec 2025',
   },
@@ -345,10 +365,10 @@ export const mockCollaborators: CollaboratorProfile[] = [
     avatar: '✨',
     tier: 'gold',
     approvedCount: 28,
-    totalEarnings: 1150.00,
+    totalXP: 6890,
     topCampaigns: [
-      { merchant: 'Tea Time', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpqawVmP77HQWimN-bUvxVpOlpLE8gYHAXCw&s', earnings: 480 },
-      { merchant: 'Cat Planet', logo: 'https://images.snoonu.com/brand/header_image/2024-04/8908d507-e801-4afe-b267-80b8fcd2f5b3_Popularbrand7.png?format=webp', earnings: 340 },
+      { merchant: 'Tea Time', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpqawVmP77HQWimN-bUvxVpOlpLE8gYHAXCw&s', xp: 1850 },
+      { merchant: 'Cat Planet', logo: 'https://images.snoonu.com/brand/header_image/2024-04/8908d507-e801-4afe-b267-80b8fcd2f5b3_Popularbrand7.png?format=webp', xp: 1420 },
     ],
     joinedDate: 'Nov 2025',
   },
@@ -358,21 +378,21 @@ export const mockCollaborators: CollaboratorProfile[] = [
     avatar: '🌴',
     tier: 'bronze',
     approvedCount: 8,
-    totalEarnings: 320.00,
+    totalXP: 1680,
     topCampaigns: [
-      { merchant: 'Karak Mqanes', logo: 'https://images.deliveryhero.io/image/talabat/restaurants/logo_94637864896607282057.jpg?width=180', earnings: 220 },
+      { merchant: 'Karak Mqanes', logo: 'https://images.deliveryhero.io/image/talabat/restaurants/logo_94637864896607282057.jpg?width=180', xp: 920 },
     ],
     joinedDate: 'Jan 2026',
   },
 ];
 
 export const mockMerchantLeaderboard: MerchantLeaderboardEntry[] = [
-  { id: 'merch-1', merchantId: 'merch-1', name: 'McDonalds', merchant: 'McDonalds', logo: 'https://www.mcdonalds.com/content/dam/sites/ArabiaGWS/arabic/nfl/logo/McDonalds_Logo.png', commissionsGiven: 8450, collabsEnrolled: 156, tags: ['Most Active', 'Best Paying'] },
-  { id: 'merch-2', merchantId: 'merch-2', name: 'Tea Time', merchant: 'Tea Time', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpqawVmP77HQWimN-bUvxVpOlpLE8gYHAXCw&s', commissionsGiven: 5120, collabsEnrolled: 98, tags: ['Popular', 'Fast Approval'] },
-  { id: 'merch-3', merchantId: 'merch-3', name: 'Korean Beauty', merchant: 'Korean Beauty', logo: 'https://images.snoonu.com/brand/header_image/2024-02/00af4a7a-9386-4860-bb04-809cf7a6fb96_JumboLogo.png?format=webp', commissionsGiven: 4890, collabsEnrolled: 67, tags: ['High Value'] },
-  { id: 'merch-4', merchantId: 'merch-4', name: 'Karak Mqanes', merchant: 'Karak Mqanes', logo: 'https://images.deliveryhero.io/image/talabat/restaurants/logo_94637864896607282057.jpg?width=180', commissionsGiven: 3540, collabsEnrolled: 89, tags: ['Trending'] },
-  { id: 'merch-5', merchantId: 'merch-5', name: 'Cat Planet', merchant: 'Cat Planet', logo: 'https://images.snoonu.com/brand/header_image/2024-04/8908d507-e801-4afe-b267-80b8fcd2f5b3_Popularbrand7.png?format=webp', commissionsGiven: 2980, collabsEnrolled: 45, tags: ['Growing'] },
-  { id: 'merch-6', merchantId: 'merch-6', name: 'Toysimo', merchant: 'Toysimo', logo: 'https://images.snoonu.com/brand/header_image/2024-03/010ca983-af9b-4449-9ef0-d35c66da220b_FavoritebrandToysimo.png?format=webp', commissionsGiven: 2340, collabsEnrolled: 34, tags: [] },
+  { id: 'merch-1', merchantId: 'merch-1', name: 'McDonalds', merchant: 'McDonalds', logo: 'https://www.mcdonalds.com/content/dam/sites/ArabiaGWS/arabic/nfl/logo/McDonalds_Logo.png', totalXPAwarded: 42500, collabsEnrolled: 156, tags: ['Most Active', 'Top Engagement'] },
+  { id: 'merch-2', merchantId: 'merch-2', name: 'Tea Time', merchant: 'Tea Time', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpqawVmP77HQWimN-bUvxVpOlpLE8gYHAXCw&s', totalXPAwarded: 25800, collabsEnrolled: 98, tags: ['Popular', 'Fast Approval'] },
+  { id: 'merch-3', merchantId: 'merch-3', name: 'Korean Beauty', merchant: 'Korean Beauty', logo: 'https://images.snoonu.com/brand/2024-02/00af4a7a-9386-4860-bb04-809cf7a6fb96_JumboLogo.png?format=webp', totalXPAwarded: 24200, collabsEnrolled: 67, tags: ['High Value'] },
+  { id: 'merch-4', merchantId: 'merch-4', name: 'Karak Mqanes', merchant: 'Karak Mqanes', logo: 'https://images.deliveryhero.io/image/talabat/restaurants/logo_94637864896607282057.jpg?width=180', totalXPAwarded: 17800, collabsEnrolled: 89, tags: ['Trending'] },
+  { id: 'merch-5', merchantId: 'merch-5', name: 'Cat Planet', merchant: 'Cat Planet', logo: 'https://images.snoonu.com/brand/header_image/2024-04/8908d507-e801-4afe-b267-80b8fcd2f5b3_Popularbrand7.png?format=webp', totalXPAwarded: 14900, collabsEnrolled: 45, tags: ['Growing'] },
+  { id: 'merch-6', merchantId: 'merch-6', name: 'Toysimo', merchant: 'Toysimo', logo: 'https://images.snoonu.com/brand/header_image/2024-03/010ca983-af9b-4449-9ef0-d35c66da220b_FavoritebrandToysimo.png?format=webp', totalXPAwarded: 11700, collabsEnrolled: 34, tags: [] },
 ];
 
 export const mockDailyWinners: DailyWinner[] = [
@@ -382,7 +402,7 @@ export const mockDailyWinners: DailyWinner[] = [
     collaborator: mockCollaborators[0],
     campaign: 'Weekend Special',
     merchant: 'Pizza Palace',
-    earnings: 89.50,
+    xpEarned: 450,
   },
   {
     collaboratorId: 'collab-2',
@@ -390,7 +410,7 @@ export const mockDailyWinners: DailyWinner[] = [
     collaborator: mockCollaborators[1],
     campaign: 'Fresh Start',
     merchant: 'FreshBox Market',
-    earnings: 67.00,
+    xpEarned: 380,
   },
   {
     collaboratorId: 'collab-4',
@@ -398,6 +418,6 @@ export const mockDailyWinners: DailyWinner[] = [
     collaborator: mockCollaborators[3],
     campaign: 'Morning Brew',
     merchant: 'Cafe Arabica',
-    earnings: 52.00,
+    xpEarned: 320,
   },
 ];
