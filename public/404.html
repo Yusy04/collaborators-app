@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Snoonu Collaborators</title>
+    <script type="text/javascript">
+      // GitHub Pages SPA 404 handler
+      // Preserves the pathname and redirects to index.html
+      
+      var l = window.location;
+      var basePath = '/collaborators-app';
+      var pathname = l.pathname;
+      
+      // Extract the route (everything after base path)
+      var route = pathname.replace(basePath, '') || '/';
+      if (!route.startsWith('/')) route = '/' + route;
+      
+      // Store the route in sessionStorage so React Router can read it
+      sessionStorage.setItem('redirectRoute', route);
+      
+      // Redirect to base path - this will load index.html
+      var redirect = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        basePath + '/' + l.search + l.hash;
+      
+      window.location.replace(redirect);
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
