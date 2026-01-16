@@ -33,7 +33,7 @@ export const DemoControls = ({
       <div className="bg-gray-900 text-white rounded-xl shadow-2xl overflow-hidden">
         <button
           onClick={onToggle}
-          className="w-full px-4 py-3 flex items-center justify-between bg-gray-800 hover:bg-gray-700 transition-colors"
+          className="w-full px-4 py-3 flex items-center justify-between bg-gray-800 hover:bg-gray-700 transition-colors gap-3"
         >
           <span className="text-sm font-medium flex items-center gap-2">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -43,7 +43,7 @@ export const DemoControls = ({
             Demo Mode
           </span>
           <svg
-            className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+            className={`w-4 h-4 transition-transform flex-shrink-0 ${isExpanded ? 'rotate-180' : ''}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
