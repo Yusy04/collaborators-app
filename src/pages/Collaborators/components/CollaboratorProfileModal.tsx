@@ -121,11 +121,24 @@ export const CollaboratorProfileModal = ({
             <div className="space-y-2">
               {collaborator.topCampaigns.map((campaign, i) => (
                 <div key={i} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0">
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg">{campaign.logo}</span>
-                    <span className="text-sm text-gray-700">{campaign.merchant}</span>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-white border border-gray-100 flex items-center justify-center overflow-hidden shadow-sm">
+                      {campaign.logo.startsWith('http') ? (
+                        <img 
+                          src={campaign.logo} 
+                          alt={campaign.merchant}
+                          className="w-8 h-8 object-contain"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).style.display = 'none';
+                          }}
+                        />
+                      ) : (
+                        <span className="text-lg">{campaign.logo}</span>
+                      )}
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">{campaign.merchant}</span>
                   </div>
-                  <span className="text-sm font-medium text-green-600">+{campaign.earnings} QAR</span>
+                  <span className="text-sm font-semibold text-green-600">+{campaign.earnings} QAR</span>
                 </div>
               ))}
             </div>

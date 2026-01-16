@@ -308,9 +308,9 @@ export const mockCollaborators: CollaboratorProfile[] = [
     approvedCount: 67,
     totalEarnings: 2450.50,
     topCampaigns: [
-      { merchant: 'Pizza Palace', logo: '🍕', earnings: 890 },
-      { merchant: 'Burger Majlis', logo: '🍔', earnings: 650 },
-      { merchant: 'Cafe Arabica', logo: '☕', earnings: 420 },
+      { merchant: 'McDonalds', logo: 'https://www.mcdonalds.com/content/dam/sites/ArabiaGWS/arabic/nfl/logo/McDonalds_Logo.png', earnings: 890 },
+      { merchant: 'Tea Time', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpqawVmP77HQWimN-bUvxVpOlpLE8gYHAXCw&s', earnings: 650 },
+      { merchant: 'Karak Mqanes', logo: 'https://images.deliveryhero.io/image/talabat/restaurants/logo_94637864896607282057.jpg?width=180', earnings: 420 },
     ],
     joinedDate: 'Oct 2025',
   },
@@ -322,8 +322,8 @@ export const mockCollaborators: CollaboratorProfile[] = [
     approvedCount: 34,
     totalEarnings: 1280.00,
     topCampaigns: [
-      { merchant: 'FreshBox Market', logo: '🥗', earnings: 520 },
-      { merchant: 'Burger Majlis', logo: '🍔', earnings: 380 },
+      { merchant: 'Korean Beauty', logo: 'https://images.snoonu.com/brand/header_image/2024-02/00af4a7a-9386-4860-bb04-809cf7a6fb96_JumboLogo.png?format=webp', earnings: 520 },
+      { merchant: 'McDonalds', logo: 'https://www.mcdonalds.com/content/dam/sites/ArabiaGWS/arabic/nfl/logo/McDonalds_Logo.png', earnings: 380 },
     ],
     joinedDate: 'Nov 2025',
   },
@@ -335,7 +335,7 @@ export const mockCollaborators: CollaboratorProfile[] = [
     approvedCount: 18,
     totalEarnings: 890.00,
     topCampaigns: [
-      { merchant: 'Tech Zone', logo: '📱', earnings: 650 },
+      { merchant: 'Toysimo', logo: 'https://images.snoonu.com/brand/header_image/2024-03/010ca983-af9b-4449-9ef0-d35c66da220b_FavoritebrandToysimo.png?format=webp', earnings: 650 },
     ],
     joinedDate: 'Dec 2025',
   },
@@ -347,8 +347,8 @@ export const mockCollaborators: CollaboratorProfile[] = [
     approvedCount: 28,
     totalEarnings: 1150.00,
     topCampaigns: [
-      { merchant: 'Cafe Arabica', logo: '☕', earnings: 480 },
-      { merchant: 'Desert Safari Tours', logo: '🏜️', earnings: 340 },
+      { merchant: 'Tea Time', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpqawVmP77HQWimN-bUvxVpOlpLE8gYHAXCw&s', earnings: 480 },
+      { merchant: 'Cat Planet', logo: 'https://images.snoonu.com/brand/header_image/2024-04/8908d507-e801-4afe-b267-80b8fcd2f5b3_Popularbrand7.png?format=webp', earnings: 340 },
     ],
     joinedDate: 'Nov 2025',
   },
@@ -360,7 +360,7 @@ export const mockCollaborators: CollaboratorProfile[] = [
     approvedCount: 8,
     totalEarnings: 320.00,
     topCampaigns: [
-      { merchant: 'Desert Safari Tours', logo: '🏜️', earnings: 220 },
+      { merchant: 'Karak Mqanes', logo: 'https://images.deliveryhero.io/image/talabat/restaurants/logo_94637864896607282057.jpg?width=180', earnings: 220 },
     ],
     joinedDate: 'Jan 2026',
   },

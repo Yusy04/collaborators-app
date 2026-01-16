@@ -34,20 +34,24 @@ export const MiniChart = ({ data, type, color = 'white' }: MiniChartProps) => {
   const range = max - min || 1;
 
   if (type === 'bar') {
+    const barWidth = 100 / data.length;
+    const gap = barWidth * 0.2;
+    const actualBarWidth = barWidth - gap;
+    
     return (
-      <svg viewBox="0 0 60 30" className="w-16 h-8">
+      <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="w-full h-full">
         {data.map((value, i) => {
-          const height = ((value - min) / range) * 24;
+          const height = ((value - min) / range) * 32;
           return (
             <rect
               key={i}
-              x={i * 8 + 2}
-              y={28 - height}
-              width="5"
+              x={i * barWidth + gap / 2}
+              y={38 - height}
+              width={actualBarWidth}
               height={height}
               fill={color}
               opacity={0.9}
-              rx="1"
+              rx="2"
             />
           );
         })}
@@ -57,15 +61,15 @@ export const MiniChart = ({ data, type, color = 'white' }: MiniChartProps) => {
 
   if (type === 'line' || type === 'area') {
     const points = data.map((value, i) => ({
-      x: (i / Math.max(data.length - 1, 1)) * 56 + 2,
-      y: 26 - ((value - min) / range) * 22
+      x: (i / Math.max(data.length - 1, 1)) * 96 + 2,
+      y: 36 - ((value - min) / range) * 30
     }));
 
     const smoothPath = createSmoothPath(points);
-    const areaPath = `${smoothPath} L ${points[points.length - 1].x} 26 L 2 26 Z`;
+    const areaPath = `${smoothPath} L ${points[points.length - 1].x} 38 L 2 38 Z`;
 
     return (
-      <svg viewBox="0 0 60 30" className="w-16 h-8">
+      <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="w-full h-full">
         {type === 'area' && (
           <path d={areaPath} fill={color} opacity="0.3" />
         )}

@@ -31,7 +31,7 @@ Snoonu Collaborators is a platform where influencers and content creators can:
 - Conversion tracking table
 - Date range and campaign filters
 
-### Gamification Tab
+### Leaderboard Tab
 - Tier-based ranking system (Rookie, Bronze, Silver, Gold, Platinum)
 - Top collaborators podium with Monthly/All Time toggle
 - Merchant leaderboard

@@ -4,7 +4,6 @@ import { statusConfig } from '../constants';
 import { AreaChart } from './AreaChart';
 import { PieChart } from './PieChart';
 import { MiniChart } from './MiniChart';
-import { ChartIcon } from './Icons';
 
 interface AnalyticsTabProps {
   enrollments: Enrollment[];
@@ -564,18 +563,18 @@ export const AnalyticsTab = ({ enrollments }: AnalyticsTabProps) => {
       {/* Colored Stats Cards Row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Revenue Status */}
-        <div className="bg-gradient-to-br from-snoonu-red to-red-600 rounded-2xl p-5 text-white relative overflow-hidden">
-          <div className="absolute bottom-0 left-0 right-0 opacity-30">
+        <div className="bg-gradient-to-br from-snoonu-red to-red-600 rounded-2xl p-5 text-white relative overflow-hidden min-h-[140px]">
+          <div className="absolute bottom-0 left-0 right-0 h-12 opacity-30">
             <MiniChart data={miniChartData.revenue.length ? miniChartData.revenue : [3, 5, 4, 6, 5, 7, 6]} type="bar" color="white" />
           </div>
           <p className="text-xs font-medium opacity-80 mb-1">Revenue Status</p>
           <p className="text-2xl font-bold">{analyticsData.availableEarnings.toFixed(0)} QAR</p>
-          <p className="text-xs opacity-70 mt-8">Jan 01 - Jan {new Date().getDate()}</p>
+          <p className="text-xs opacity-70 mt-auto absolute bottom-5 left-5">Jan 01 - Jan {new Date().getDate()}</p>
         </div>
 
         {/* Page Views (Clicks) */}
-        <div className="bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl p-5 text-white relative overflow-hidden">
-          <div className="absolute bottom-2 left-0 right-0 opacity-30">
+        <div className="bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl p-5 text-white relative overflow-hidden min-h-[140px]">
+          <div className="absolute bottom-0 left-0 right-0 h-12 opacity-30">
             <MiniChart data={miniChartData.clicks.length ? miniChartData.clicks : [10, 15, 12, 18, 14, 20, 16]} type="area" color="white" />
           </div>
           <p className="text-xs font-medium opacity-80 mb-1">Page Views</p>
@@ -583,25 +582,23 @@ export const AnalyticsTab = ({ enrollments }: AnalyticsTabProps) => {
         </div>
 
         {/* Conversion Rate */}
-        <div className="bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-2xl p-5 text-white relative overflow-hidden">
-          <div className="absolute bottom-2 left-0 right-0 opacity-30">
+        <div className="bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-2xl p-5 text-white relative overflow-hidden min-h-[140px]">
+          <div className="absolute bottom-0 left-0 right-0 h-12 opacity-30">
             <MiniChart data={miniChartData.conversion.length ? miniChartData.conversion : [5, 8, 6, 9, 7, 10, 8]} type="line" color="white" />
           </div>
           <p className="text-xs font-medium opacity-80 mb-1">Conversion Rate</p>
           <p className="text-2xl font-bold">{analyticsData.conversionRate.toFixed(1)}%</p>
-          <select className="mt-4 bg-white/20 text-white text-xs rounded px-2 py-1 border-0 outline-none">
-            <option>Monthly</option>
-          </select>
+          <p className="text-xs opacity-70 mt-auto absolute bottom-5 left-5">Jan 01 - Jan {new Date().getDate()}</p>
         </div>
 
         {/* Orders */}
-        <div className="bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl p-5 text-white relative overflow-hidden">
-          <div className="absolute bottom-0 left-0 right-0 opacity-30">
+        <div className="bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl p-5 text-white relative overflow-hidden min-h-[140px]">
+          <div className="absolute bottom-0 left-0 right-0 h-12 opacity-30">
             <MiniChart data={miniChartData.orders.length ? miniChartData.orders : [2, 4, 3, 5, 4, 6, 5]} type="bar" color="white" />
           </div>
           <p className="text-xs font-medium opacity-80 mb-1">Total Orders</p>
           <p className="text-2xl font-bold">{analyticsData.totalOrders}</p>
-          <p className="text-xs opacity-70 mt-8">Jan 01 - Jan {new Date().getDate()}</p>
+          <p className="text-xs opacity-70 mt-auto absolute bottom-5 left-5">Jan 01 - Jan {new Date().getDate()}</p>
         </div>
       </div>
 

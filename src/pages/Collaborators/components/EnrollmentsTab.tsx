@@ -2,7 +2,6 @@ import { useState } from 'react';
 import type { Enrollment } from '../types';
 import { EnrollmentCard } from './EnrollmentCard';
 import { EnrollmentDetailModal } from './EnrollmentDetailModal';
-import { ChartIcon } from './Icons';
 
 interface EnrollmentsTabProps {
   enrollments: Enrollment[];
