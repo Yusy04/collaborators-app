@@ -59,7 +59,7 @@ export const campaigns: Campaign[] = [
   {
     id: "camp-2",
     merchant: "Korean Beauty",
-    logo: "https://images.snoonu.com/brand/2024-02/00af4a7a-9386-4860-bb04-809cf7a6fb96_JumboLogo.png?format=webp",
+    logo: "https://kbeauty.qa/cdn/shop/files/kb_png_for_website_500x.png?v=1764239313",
     vertical: "Market",
     category: "Beauty & Skincare",
     discount: "15% off up to 60 QAR",
@@ -342,7 +342,7 @@ export const mockCollaborators: CollaboratorProfile[] = [
     approvedCount: 34,
     totalXP: 8520,
     topCampaigns: [
-      { merchant: 'Korean Beauty', logo: 'https://images.snoonu.com/brand/2024-02/00af4a7a-9386-4860-bb04-809cf7a6fb96_JumboLogo.png?format=webp', xp: 2450 },
+      { merchant: 'Korean Beauty', logo: 'https://kbeauty.qa/cdn/shop/files/kb_png_for_website_500x.png?v=1764239313', xp: 2450 },
       { merchant: 'McDonalds', logo: 'https://www.mcdonalds.com/content/dam/sites/ArabiaGWS/arabic/nfl/logo/McDonalds_Logo.png', xp: 1980 },
     ],
     joinedDate: 'Nov 2025',
@@ -389,7 +389,7 @@ export const mockCollaborators: CollaboratorProfile[] = [
 export const mockMerchantLeaderboard: MerchantLeaderboardEntry[] = [
   { id: 'merch-1', merchantId: 'merch-1', name: 'McDonalds', merchant: 'McDonalds', logo: 'https://www.mcdonalds.com/content/dam/sites/ArabiaGWS/arabic/nfl/logo/McDonalds_Logo.png', totalXPAwarded: 42500, collabsEnrolled: 156, tags: ['Most Active', 'Top Engagement'] },
   { id: 'merch-2', merchantId: 'merch-2', name: 'Tea Time', merchant: 'Tea Time', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpqawVmP77HQWimN-bUvxVpOlpLE8gYHAXCw&s', totalXPAwarded: 25800, collabsEnrolled: 98, tags: ['Popular', 'Fast Approval'] },
-  { id: 'merch-3', merchantId: 'merch-3', name: 'Korean Beauty', merchant: 'Korean Beauty', logo: 'https://images.snoonu.com/brand/2024-02/00af4a7a-9386-4860-bb04-809cf7a6fb96_JumboLogo.png?format=webp', totalXPAwarded: 24200, collabsEnrolled: 67, tags: ['High Value'] },
+  { id: 'merch-3', merchantId: 'merch-3', name: 'Korean Beauty', merchant: 'Korean Beauty', logo: 'https://kbeauty.qa/cdn/shop/files/kb_png_for_website_500x.png?v=1764239313', totalXPAwarded: 24200, collabsEnrolled: 67, tags: ['High Value'] },
   { id: 'merch-4', merchantId: 'merch-4', name: 'Karak Mqanes', merchant: 'Karak Mqanes', logo: 'https://images.deliveryhero.io/image/talabat/restaurants/logo_94637864896607282057.jpg?width=180', totalXPAwarded: 17800, collabsEnrolled: 89, tags: ['Trending'] },
   { id: 'merch-5', merchantId: 'merch-5', name: 'Cat Planet', merchant: 'Cat Planet', logo: 'https://images.snoonu.com/brand/header_image/2024-04/8908d507-e801-4afe-b267-80b8fcd2f5b3_Popularbrand7.png?format=webp', totalXPAwarded: 14900, collabsEnrolled: 45, tags: ['Growing'] },
   { id: 'merch-6', merchantId: 'merch-6', name: 'Toysimo', merchant: 'Toysimo', logo: 'https://images.snoonu.com/brand/header_image/2024-03/010ca983-af9b-4449-9ef0-d35c66da220b_FavoritebrandToysimo.png?format=webp', totalXPAwarded: 11700, collabsEnrolled: 34, tags: [] },
