@@ -155,12 +155,12 @@ export const EnrollmentDetailModal = ({
           {/* Status-specific content */}
           {enrollment.status === 'enrolled' && (
             <div className="space-y-4">
-              <div className="border-2 border-dashed border-gray-300 rounded-2xl p-8 text-center bg-gradient-to-br from-gray-50 to-gray-100">
-                <div className="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center mx-auto mb-4">
-                  <UploadIcon className="w-8 h-8 text-gray-400" />
+              <div className="border-2 border-dashed border-gray-300 rounded-2xl p-5 text-center bg-gradient-to-br from-gray-50 to-gray-100">
+                <div className="w-12 h-12 bg-white rounded-xl shadow-lg flex items-center justify-center mx-auto mb-3">
+                  <UploadIcon className="w-6 h-6 text-gray-400" />
                 </div>
-                <p className="text-gray-700 font-medium mb-2">Upload your promotional video</p>
-                <p className="text-sm text-gray-500 mb-4">{enrollment.campaign.videoReq}</p>
+                <p className="text-gray-700 font-medium mb-1 text-sm">Upload your promotional video</p>
+                <p className="text-xs text-gray-500 mb-3">{enrollment.campaign.videoReq}</p>
                 <input
                   ref={fileInputRef}
                   type="file"
@@ -171,7 +171,7 @@ export const EnrollmentDetailModal = ({
                 <button
                   onClick={() => fileInputRef.current?.click()}
                   style={{ backgroundColor: '#E31837' }}
-                  className="px-8 py-3 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all"
+                  className="px-6 py-2.5 text-white rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all"
                 >
                   Select Video
                 </button>
